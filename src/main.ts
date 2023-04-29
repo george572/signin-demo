@@ -2,7 +2,17 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
 
+import * as Vue from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 import { IonicVue } from '@ionic/vue';
+
+// store 
+import store from './store';
+
+// custom css
+import './theme/variables.css';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -21,11 +31,13 @@ import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+import '../src/assets/scss/main.scss';
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(store)
+  .use(VueAxios, axios);
   
 router.isReady().then(() => {
   app.mount('#app');
